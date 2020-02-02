@@ -1,0 +1,12 @@
+.about_coach{
+text-align: center;
+background-color: rgb(17, 17, 17);
+padding: 20px;
+color: #ffffff;
+padding: 60px 0;
+}
+
+.about_coach .heading{
+    font-weight: 600;
+    display: block;
+}

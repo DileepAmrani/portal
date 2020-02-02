@@ -1,0 +1,53 @@
+.login-section{
+    background-color: #bbb8b8;
+    height: 400px !important;
+    margin-top: 70px;
+    width: 100%!important;
+    font-family: 'Questrial', sans-serif !important;
+}
+.login-form{
+    text-align: center;
+    margin-top:-17px;
+    background-color: rgb(228, 226, 226);
+    padding: 10px;
+    font-family: 'Questrial', sans-serif !important;
+}
+
+.login_heading{
+ font-size: 30px;
+ font-weight: 400;
+ font-family: 'Questrial', sans-serif !important;
+ background-color: #202020;
+ color:white;
+ border-radius: 2px;
+ text-align: center;
+ margin-top: 50px !important;
+}
+.inputs{
+    padding: 9px;
+    display: block;
+    margin: 5px auto;
+    width: 90%;
+    border-radius: 3px;
+    border: 1px solid rgb(216, 215, 215);
+    font-family: 'Questrial', sans-serif !important;
+}
+.error span{
+    color: red;
+    text-align: center;
+}
+
+.forgot-link{
+    font-family: 'Questrial', sans-serif !important;
+    font-weight: 600;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+.login-form{
+    background-color: #bbb8b8;
+}
+
+
+}

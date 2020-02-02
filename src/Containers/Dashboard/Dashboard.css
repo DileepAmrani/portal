@@ -1,0 +1,120 @@
+.dashboard-section{
+  background-color: rgb(255, 236, 236);
+}
+
+.profileDiv {
+  background-position: center;
+  background-size: cover;
+  height: 180px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+.form {
+  background-color: #ebebeb;
+  padding: 30px;
+}
+.users-card {
+  border: 1px solid black;
+  width: 80%;
+  margin: 5px auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.users-card ._profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid blue;
+  float: left;
+  margin: auto 10px;
+}
+
+.form label {
+  color: black;
+  font-weight: 400;
+}
+.userdetail span {
+  display: block;
+  font-weight: bold;
+  padding: 0px;
+}
+
+/* Pie Chart  */
+.box{
+    width: 10px;
+    height: 5px;
+    background-color: #01a2fe;
+    color: #01a2fe
+} 
+
+  /* Cards CSS  */
+  ._heading {
+  text-align: center;
+  font-weight: 500;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 2em;
+}
+/* Float four columns side by side */
+.column {
+  float: center;
+  width: 50%;
+  height: 50%;
+  /* min-height: 400px;
+  min-width: 400px; */
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  /* padding: 20px; */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 1000px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  text-align: center;
+  background-color: #f1f1f1;
+  min-height: 160px;
+  color: #f1f1f1;
+}
+
+.card-1 {
+  /* background-color: #132226 !important; */
+  background-color: #ececec !important;
+
+}
+.card-2 {
+  background-color: #ececec !important;
+  /* background-color: #a7414a !important; */
+}
+.card-3 {
+  background-color: #0abda0!important;
+}
+.card-4 {
+  background-color: #bd3e85 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}

@@ -1,0 +1,23 @@
+.help{
+    margin-top: 70px;
+    background-color: rgb(37, 37, 37);
+    color: #fff;
+    padding: 40px 0;
+}
+
+.Dashboard{
+    margin-top: 5px;
+    background-color: rgb(37, 37, 37);
+    color: #fff;
+    padding: 40px 0;
+}
+/* 
+.heading_content{
+    text-align: center;
+} */
+
+.help-input{
+    width: 80%;
+    font-family: 'Questrial', sans-serif !important;
+    margin-top: auto;
+}

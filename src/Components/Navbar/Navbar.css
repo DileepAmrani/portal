@@ -1,0 +1,19 @@
+.navbar-section{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.navbar {
+  color: #758999;
+  background-color: rgb(32, 32, 32);
+}
+.navItems{
+  padding: 0px!important;
+  margin: 0px!important;
+}
+.span{
+  color: #ffffff;
+  padding: 10px 20px;
+  margin: 0px;
+}

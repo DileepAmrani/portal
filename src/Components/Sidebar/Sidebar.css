@@ -1,0 +1,40 @@
+.siderbar_header {
+  background-color: #202020;
+  color: white;
+  padding: 15px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+._innerItem{
+  background-color: #202020!important;
+}
+.manue_icon {
+  font-size: 35px;
+  margin: 10px;
+}
+.user_icon {
+  font-size: 80px;
+}
+._innerItem p {
+  text-align: center !important;
+  font-size: 20px;
+}
+ul span{
+padding: 0 10px;
+vertical-align: baseline;
+}
+ul li {
+  margin-left: 35px;
+  cursor: pointer;
+  font-weight: normal;
+  color: white;
+  align-items: center;
+}
+ul li:hover {
+  color: wheat;
+}
+ul,
+li {
+  font-size: 17px;
+  /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
+}
