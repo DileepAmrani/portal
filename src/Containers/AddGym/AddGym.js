@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Sidebar, Footer } from "../../Components";
+import { Sidebar, Footer } from "../../Components";
 import { firebaseApp } from "../../Config/Firebase/Firebase.js";
 import "./AddGym.css";
 import Swal from 'sweetalert2'
@@ -8,13 +8,6 @@ import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBBtn,
-  MDBInput,
-  MDBFormInline,
-  MDBModal,
-  MDBModalBody,
-  MDBModalHeader,
-  MDBModalFooter
 } from "mdbreact";
 import Paper from "@material-ui/core/Paper";
 
@@ -26,11 +19,10 @@ class AddTrainer extends React.Component {
       gymID: "",
       gymName: "",
       gymAddress: "",
-      message: ""
+      error: ""
     };
   }
   componentDidMount = async () => {
-    let alluser = [];
     await firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
         let user = localStorage.getItem("user");
@@ -78,34 +70,49 @@ class AddTrainer extends React.Component {
   handelSubmit = async() => {
     console.log(this.state);
     let that = this
-   await  firebaseApp
-      .firestore()
-      .collection("gym")
-      .add({
-        gymName: this.state.gymName,
-        gymID: this.state.gymID
+    
+    if (this.state.gymName === "" || this.state.gymID === "" || this.state.gymAddress === "") {
+      this.setState({
+        error: 'Please Fill All Fields'
       })
-      .then(data =>{
-        console.log("Document written with ID: ", data);
-        that.setState({
-          message: "Data Sent Successfully",
-          gymID: "",
-          gymName: "",
-          gymAddress: ""
-        });
-        Swal.fire({
-          title: 'Success',
-          text: "Gym Add successfully",
-          icon: 'success',
-          confirmButtonText: 'Ok'
-        })  
+    }
+    else {
+      await  firebaseApp
+         .firestore()
+         .collection("gym")
+         .add({
+           gymName: this.state.gymName,
+           gymID: this.state.gymID  
+         })
+         .then(data =>{
+           console.log("Document written with ID: ", data);
+           that.setState({
+             gymID: "",
+             gymName: "",
+             gymAddress: ""
+           });
+           Swal.fire({
+             title: 'Success',
+             text: "Gym Add successfully",
+             icon: 'success',
+             confirmButtonText: 'Ok'
+           })  
+         })
+         .catch(error => {
+           console.error("Error adding document: ", error);
+           this.setState({
+             error: "Data not Sent Successfully"
+           });
+         });
+      
+    }
+
+
+    setTimeout(() => {
+      this.setState({
+        error: ''
       })
-      .catch(error => {
-        console.error("Error adding document: ", error);
-        this.setState({
-          message: "Data not Sent Successfully"
-        });
-      });
+    }, 3000);
   };
   render() {
     return (
@@ -159,12 +166,10 @@ class AddTrainer extends React.Component {
                     />
 
                     <button className="btn btn-success" onClick={this.handelSubmit}>Add GYM</button>
+                    <div style={{textAlign: 'center', color: 'red'}}>{this.state.error}</div>
+
                   </div>
-                  <div className="_error">
-                    <span onClick={() => this.setState({ message: "" })}>
-                    {this.state.message}
-                    </span>
-                  </div>
+
                 </Paper>
               </MDBCol>
             </MDBRow>

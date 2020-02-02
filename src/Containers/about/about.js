@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Footer,Sidebar} from "../../Components";
+import { Navbar, Footer } from "../../Components";
 import { firebaseApp } from "../../Config/Firebase/Firebase.js.js";
 import {
   MDBContainer,
@@ -54,15 +54,6 @@ class About extends React.Component {
   render() {
     return (
       <div className="about-section">
-     {/* {!this.state.value ?
-       :
-    <Sidebar
-     path = {this.props.history}
-     loginValue={this.state.loginValue}
-     login={this.login}
-     logout={this.logout}
-     />  */}
-
         <Navbar
           loginValue={this.state.loginValue}
           login={this.login}
@@ -87,6 +78,7 @@ class About extends React.Component {
             <MDBRow>
               <MDBCol col="6" md="6">
                 <iframe
+                title="About Us"
                   width="100%"
                   height="260px"
                   src="https://www.youtube.com/embed/dEpIsOXR_uI"

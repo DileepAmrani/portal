@@ -62,7 +62,7 @@ class Login extends React.Component {
           });
       })
       .catch((error)=> {
-        var errorCode = error.code;
+        // var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage);
        this.setState({
@@ -108,8 +108,9 @@ class Login extends React.Component {
                 <Paper>
                   <p className="login_heading">Login</p>
                   <div className="login-form">
-                    <img src={Logo} width="150px" />
+                    <img src={Logo} width="150px" alt="logo"/>
                     <input
+                    
                       type="text"
                       placeholder="Enter Your Email"
                       className="inputs"

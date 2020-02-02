@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Footer ,Sidebar} from "../../Components";
+import { Navbar, Footer } from "../../Components";
 import { firebaseApp } from "../../Config/Firebase/Firebase.js";
 import { MDBContainer, MDBRow, MDBCol, } from "mdbreact";
 import "./Help.css"
@@ -58,16 +58,6 @@ class Help extends React.Component {
           path={this.props.history}
           value={this.state.value}
         />
-     {/* {!this.state.value ?
-       <Navbar
-          loginValue={this.state.loginValue}
-          login={this.login}
-          logout={this.logout}
-          path={this.props.history}
-          value = {this.state.value}
-        /> :
-    <Sidebar path = {this.props.history} /> 
-    } */}
         <div className="help">
         <MDBContainer>
       <MDBRow>

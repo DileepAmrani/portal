@@ -17,7 +17,7 @@ class App extends React.Component {
         var showAdminRoute = true;
       } else {
         console.log("false");
-        var showAdminRoute = false;
+         showAdminRoute = false;
       }
     }
 

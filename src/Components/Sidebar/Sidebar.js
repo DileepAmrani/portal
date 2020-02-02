@@ -1,5 +1,5 @@
 import React from "react";
-import SideNav, { MenuIcon } from "react-simple-sidenav";
+import SideNav  from "react-simple-sidenav";
 import "./Sidebar.css";
 import {
   MdViewHeadline,
@@ -8,9 +8,6 @@ import {
   MdLocalLaundryService
 } from "react-icons/md";
 import {
-  IoIosArrowDown,
-  IoIosHome,
-  IoIosArrowForward,
   IoMdSettings,
   IoMdInformationCircleOutline,
   IoMdLogOut,

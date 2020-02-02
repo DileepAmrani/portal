@@ -1,16 +1,11 @@
 import React from "react";
-import { Navbar, Slider, AboutCoach, Footer } from "../../Components";
+import { Navbar, Footer } from "../../Components";
 import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBBtn,
-  MDBInput,
-  MDBFormInline
 } from "mdbreact";
 import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import { firebaseApp } from "../../Config/Firebase/Firebase.js";
 import "./Profile.css";
 
@@ -28,8 +23,8 @@ class Profile extends React.Component {
     let fileName = e.target.files[0].name;
     let ref = firebaseApp
       .storage()
-      .ref("/")
-      .child(fileName);
+      .ref("/images")
+      .child(`${fileName}`);
     let imagePut = ref.put(e.target.files[0]);
     imagePut.on("state_changed", () => {
       ref
@@ -230,6 +225,7 @@ class Profile extends React.Component {
                         src={profileImage}
                         width="200px"
                         height="200px"
+                        alt="profile"
                         style={{
                           display: "block",
                           borderRadius: "360px",
@@ -386,6 +382,7 @@ class Profile extends React.Component {
                         >
                           <img
                             src={profileImage}
+                            alt="profile"
                             width="200px"
                             height="200px"
                             style={{

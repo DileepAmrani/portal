@@ -54,7 +54,7 @@
   text-align: center;
   font-weight: 500;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  letter-spacing: 2em;
+  letter-spacing: 0.5em;
 }
 /* Float four columns side by side */
 .column {

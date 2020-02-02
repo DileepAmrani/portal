@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Sidebar, Footer } from "../../Components";
+import { Sidebar, Footer } from "../../Components";
 import { firebaseApp } from "../../Config/Firebase/Firebase.js";
 import "./AddProgram.css";
 import Swal from 'sweetalert2'
@@ -8,13 +8,6 @@ import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBBtn,
-  MDBInput,
-  MDBFormInline,
-  MDBModal,
-  MDBModalBody,
-  MDBModalHeader,
-  MDBModalFooter
 } from "mdbreact";
 import Paper from "@material-ui/core/Paper";
 
@@ -25,11 +18,11 @@ class AddTrainer extends React.Component {
       loginValue: "Login",
       programID: "",
       programName: "",
-      message:""
+      error:""
     };
   }
   componentDidMount = async () => {
-    let alluser = [];
+    // let alluser = [];
     await firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
         let user = localStorage.getItem("user");
@@ -76,33 +69,52 @@ class AddTrainer extends React.Component {
 
   handelSubmit = () => {
     let that = this
-    firebaseApp.firestore()
-        .collection("programs")
-        .add({
-            programName: this.state.programName,
-            programID: this.state.programID
-        })
-        .then(function (data) {
-            console.log("Document written with ID: ", data);
-            that.setState({
-              message: "Data Sent Successfully",
-              programID: "",
-              programName: "",
-            })
-            Swal.fire({
-              title: 'Success',
-              text: "Program Add successfully",
-              icon: 'success',
-              confirmButtonText: 'Ok'
-            })  
 
-        })
-        .catch(function (error) {
-            console.error("Error adding document: ", error);
-          this.setState({
-            message: "Data Sent Successfully",
+
+    if (this.state.programName === "" || this.state.programID === "") {
+      this.setState({
+        error: 'Please Fill All Fields'
+      })
+    }
+    else {
+      firebaseApp.firestore()
+          .collection("programs")
+          .add({
+              programName: this.state.programName,
+              programID: this.state.programID
           })
-        });
+          .then(function (data) {
+              console.log("Document written with ID: ", data);
+              that.setState({
+                message: "Data Sent Successfully",
+                programID: "",
+                programName: "",
+              })
+              Swal.fire({
+                title: 'Success',
+                text: "Program Add successfully",
+                icon: 'success',
+                confirmButtonText: 'Ok'
+              })  
+  
+          })
+          .catch(function (error) {
+              console.error("Error adding document: ", error);
+            this.setState({
+              message: "Data Sent Successfully",
+            })
+          });
+    }
+
+
+    setTimeout(() => {
+      this.setState({
+        error: ''
+      })
+    }, 3000);
+
+
+
   };
 
   render() {
@@ -141,12 +153,12 @@ class AddTrainer extends React.Component {
                       onChange={this.handelChange}
                       name="programID"
                     />
-                    <label htmlFor="defaultFormLoginEmailEx">
+                    <label htmlFor="defaultFormLoginEmailE">
                       Enter Program Name:
                     </label>
                     <input
                       type="text"
-                      id="defaultFormLoginEmailEx"
+                      id="defaultFormLoginEmailE"
                       className="form-control"
                       onChange={this.handelChange}
                       name="programName"
@@ -158,12 +170,9 @@ class AddTrainer extends React.Component {
                     >
                       Add Program
                     </button>
+                    <div style={{ textAlign: 'center', color: 'red' }}>{this.state.error}</div>
                   </div>
-                  <div className="_error">
-                    <span onClick={() => this.setState({ message: "" })}>
-                      {this.state.message}
-                    </span>
-                  </div>
+               
                 </Paper>
               </MDBCol>
             </MDBRow>

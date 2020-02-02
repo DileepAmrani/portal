@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import "./About.css";
 class AboutCoach extends React.Component {
   render() {
@@ -9,6 +9,7 @@ class AboutCoach extends React.Component {
           <MDBRow>
             <MDBCol md="6">
               <iframe
+                title="about"
                 width="100%"
                 height="260px"
                 src="https://www.youtube.com/embed/dEpIsOXR_uI"

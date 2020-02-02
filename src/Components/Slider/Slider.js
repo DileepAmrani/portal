@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 import "normalize.css/normalize.css";
@@ -50,7 +49,7 @@ const slider = (props) => (
           style={{height: `100%`}}  
 
         >
-          <img src={item.image} height='600px' width="100%"/>
+          <img src={item.image} height='600px' width="100%" alt="slide"/>
           <div className="inner">
             <h1>{item.title}</h1>
             <p>{item.description}</p>

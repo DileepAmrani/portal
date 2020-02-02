@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBRow, MDBCol } from "mdbreact";
-import { Navbar, Footer, Sidebar } from "../../Components";
+import { Navbar, Footer} from "../../Components";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -56,16 +56,6 @@ class ForgetPassword extends React.Component {
   render() {
     return (
       <div className="login-section">
-            {/* {this.state.value && this.state.value === "Profile" ?
-      :
-    <Sidebar
-     path = {this.props.history}
-     loginValue={this.state.loginValue}
-     login={this.login}
-     logout={this.logout}
-     /> 
-    } */}
-
         <Navbar
           loginValue={this.state.loginValue}
           login={this.login}
@@ -79,7 +69,7 @@ class ForgetPassword extends React.Component {
               <Paper>
                   <p className="login_heading">Login</p>
                   <div className="login-form">
-                  <img src={Logo} width="150px"/>
+                  <img src={Logo} width="150px" alt="logo"/>
                    <input
                     type="text"
                     placeholder="Enter Your Email"

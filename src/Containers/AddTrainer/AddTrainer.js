@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Slider, AboutCoach, Footer, Sidebar } from "../../Components";
+import {Footer, Sidebar } from "../../Components";
 import { firebaseApp } from "../../Config/Firebase/Firebase.js";
 import "./AddTrainer.css";
 import Swal from 'sweetalert2'
@@ -8,13 +8,6 @@ import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBBtn,
-  MDBInput,
-  MDBFormInline,
-  MDBModal,
-  MDBModalBody,
-  MDBModalHeader,
-  MDBModalFooter
 } from "mdbreact";
 import Paper from "@material-ui/core/Paper";
 
@@ -24,11 +17,11 @@ class AddTrainer extends React.Component {
     this.state = {
       loginValue: "Login",
       trainerID: "",
-      trainerName: ""
+      trainerName: "",
+      error: ""
     };
   }
   componentDidMount = async () => {
-    let alluser = [];
     await firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
         let user = localStorage.getItem("user");
@@ -76,31 +69,46 @@ class AddTrainer extends React.Component {
   // submit form
 
   handelSubmit = () => {
-    firebaseApp
-      .firestore()
-      .collection("trainers")
-      .add({
-        trainerName: this.state.trainerName,
-        trainerID: this.state.trainerID,
-      })
-      .then(function(data) {
-        console.log("Document written with ID: ", data);
 
-        Swal.fire({
-          title: 'Success',
-          text: "Trainer Add successfully",
-          icon: 'success',
-          confirmButtonText: 'Ok'
-        })      
+    if (this.state.trainerName === "" || this.state.trainerID === ""){
+      this.setState({
+        error: 'Please Fill All Fields'
       })
-      .catch(function(error) {
-        Swal.fire({
-          title: 'Error!',
-          text: error.message,
-          icon: 'error',
-          confirmButtonText: 'Cool'
-        })      
-      });
+    }
+    else{
+      firebaseApp
+        .firestore()
+        .collection("trainers")
+        .add({
+          trainerName: this.state.trainerName,
+          trainerID: this.state.trainerID,
+        })
+        .then(function(data) {
+          console.log("Document written with ID: ", data);
+  
+          Swal.fire({
+            title: 'Success',
+            text: "Trainer Add successfully",
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })      
+        })
+        .catch(function(error) {
+          Swal.fire({
+            title: 'Error!',
+            text: error.message,
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })      
+        });
+    }
+
+
+    setTimeout(()=>{
+      this.setState({
+        error: ''
+      })
+    }, 3000);
   };
 
   render() {
@@ -156,6 +164,7 @@ class AddTrainer extends React.Component {
                     >
                       Add Trainer
                     </button>
+                  <div style={{textAlign: 'center', color: 'red'}}>{this.state.error}</div>
                   </div>
                 </Paper>
               </MDBCol>
